@@ -1,0 +1,53 @@
+body {
+  font-family: "Raleway", sans-serif;
+}
+p {
+  font-size: 17px;
+}
+.sidenav-container {
+  text-align: center;
+  position: fixed;
+  width: 250px;
+  height: 100vh;
+}
+.profile-img-comtanier {
+  width: 150px;
+  height: 250px;
+  overflow: hidden;
+  margin: 0 auto;
+  margin-top: 10px;
+}
+.profile-img-comtanier img {
+  width: 120px;
+  height: 120px;
+  border-radius: 70px;
+}
+.user-name {
+  margin-top: 1%;
+  font-weight: bold;
+}
+button {
+  margin-top: 5px;
+}
+
+/* STYLING FOR THE COLLECTION CARDS */
+.collection-card {
+  margin: 3% 5%;
+  cursor: pointer;
+}
+
+.collection-card:hover {
+  box-shadow: 5px 10px 15px rgba(0, 0, 0, .1);
+}
+
+
+/* STYLING FOR THE ADD COLLECTION MODAL COMPONENT */
+
+.add-collection-form-box{
+  width: 70%;
+  margin: 0 auto;
+}
+.add-collection-field-inputs{
+  border: 2px solid black;
+  border-radius: 20px;
+}

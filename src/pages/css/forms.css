@@ -1,0 +1,29 @@
+.form-box {
+  width: 80%;
+  padding: 2%;
+  margin: 2% auto;
+  color: red;
+  background-color: white;
+}
+.form-boxes{
+    border: 2px solid black;
+}
+.form-button{
+    width: 70%;
+    padding: 2%;
+    font-size: 140%;
+    font-weight: bold;
+}
+.registration-login-page-container {
+  background: #5c258d; /* fallback for old browsers */
+  background: -webkit-linear-gradient(
+    to right,
+    #4389a2,
+    #5c258d
+  ); /* Chrome 10-25, Safari 5.1-6 */
+  background: linear-gradient(
+    to right,
+    #4389a2,
+    #5c258d
+  ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
+}
