@@ -5,7 +5,8 @@ import ImageUploader from "react-images-upload";
 import { useSelector } from "react-redux";
 
 function AddCollectionModal(props) {
-  const userToken = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI1ZGIwN2JhMzA4MDFjOTJjNmNjMmUxOTgiLCJlbWFpbCI6ImlhbWRhbmllbGRvbkBnbWFpbC5jb20iLCJpYXQiOjE1NzI2MDM4MzB9.PnA0BrM9-YEvhwYSKwMEizXrlViyr4yvYMFnEnWnSlc"
+  let userToken = localStorage.getItem("user-token")
+  userToken = JSON.parse(userToken)
   const [inputs, setInputs] = useState({
     name: ""
   });
@@ -46,23 +47,30 @@ function AddCollectionModal(props) {
   const formSubmit = e => {
     e.preventDefault();
     const { name } = inputs;
+    const receiptName = name
     const receiptImg = pictures;
-
+    console.log(pictures)
     const collectionData = {
-      receiptName: name,
+      receiptName: receiptName,
       receiptImg: receiptImg
     };
-    const headers = {
+
+    console.log(collectionData);
+    console.log(userToken)
+    const url = "//localhost:5000/api/v1/users/addreceipt";
+    const options = {
+      method : 'POST',
       headers: {
         "Content-Type": "application/x-www-form-urlencoded",
         "user-token": userToken
-      }
-    };
-    console.log(collectionData);
-    Axios.post(
-      "//localhost:5000/api/v1/users/addreceipt",
-      collectionData,
-      headers
+      },
+      data: collectionData,
+      url
+
+    }
+    Axios(
+      options
+      
     ).then(res => {
       console.log(res);
     });

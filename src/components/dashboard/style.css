@@ -10,6 +10,15 @@ p {
   width: 250px;
   height: 100vh;
 }
+.edit-profile-link-text{
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 130%;
+  transition: all .3s;
+}
+.edit-profile-link-text:hover{
+  color: #007BFF;
+}
 .profile-img-comtanier {
   width: 150px;
   height: 250px;
@@ -27,7 +36,7 @@ p {
   font-weight: bold;
 }
 button {
-  margin-top: 5px;
+  margin-top: 15px;
 }
 
 /* STYLING FOR THE COLLECTION CARDS */
@@ -42,7 +51,6 @@ button {
 
 
 /* STYLING FOR THE ADD COLLECTION MODAL COMPONENT */
-
 .add-collection-form-box{
   width: 70%;
   margin: 0 auto;
@@ -50,4 +58,35 @@ button {
 .add-collection-field-inputs{
   border: 2px solid black;
   border-radius: 20px;
+}
+
+/* STYLING EditProfileModal COMPONENT */
+.edit-profile-img-comtanier {
+  width: 150px;
+  height: 200px;
+  overflow: hidden;
+  margin: 0 auto;
+  /* margin-top: 10px; */
+}
+.edit-profile-img-comtanier img {
+  width: 120px;
+  height: 120px;
+  margin: 0 auto;
+  border-radius: 70px;
+}
+.user-name{
+  text-align: center;
+  margin-left: -20px;
+}
+.edit-profile-form-box{
+  width: 70%;
+  margin: 0 auto;
+}
+.edit-profile-form{
+  width: 70%;
+  margin: 0 auto;
+}
+.edit-profile-field-inputs{
+  border: 1px solid black;
+  border-radius: 10px;
 }

@@ -1,40 +1,55 @@
-import React, {useState} from "react";
+import React, { useState, useEffect } from "react";
 import "./style.css";
 import { Button, ButtonToolbar } from "react-bootstrap";
+import { getUserProfile } from "../../actions/userActions";
 import AddCollectionModal from "./AddCollectionModal";
+import EditProfileModal from "./EditProfileModal";
+import { useSelector, useDispatch } from "react-redux";
 
 const Sidenav = () => {
-  const [modalShow, setModalShow] = useState(false);
+  const [addCollectionModalShow, setAddCollectionModalShow] = useState(false);
+  const [editProfileModalShow, setEditProfileModalShow] = useState(false);
+  const profileData = useSelector(state => state.user.userProfile);
+  console.log(profileData);
+
   return (
     <div>
       <div className="sidenav-container" style={{ backgroundColor: "#E9EEF4" }}>
         <div className="profile-img-comtanier">
-          <img
-            src="https://www.celebritynews.wiki/wp-content/uploads/2018/11/Kaylee-Bryant-Age-Birthday-Height-Net-Worth-Family-Salary.jpg"
-            alt=""
-          />
-          <h5 className="user-name">Kaylee Bryant</h5>
+          <img src={profileData.profileImg} alt="" />
+          <h5 className="" style={{ fontWeight: "bold" }}>
+            {profileData.profileName}
+          </h5>
         </div>
-        <Button>
-          <p>Hello, welcome Here</p>
-        </Button>
-        <Button>
-          <p>Hello, welcome Here</p>
-        </Button>
+        <hr />
+        <p
+          className="edit-profile-link-text"
+          onClick={() => setEditProfileModalShow(true)}
+        >
+          Edit Profile
+        </p>
+        <hr />
         <Button
-            style={{
-              borderRadius: "30px",
-              paddingTop: "17px",
-              fontWeight: "bold"
-            }}
-            onClick={() => setModalShow(true)}
-          >
-            <p>Add Collection</p>
-          </Button>
+          style={{
+            borderRadius: "30px",
+            paddingTop: "17px",
+            fontWeight: "bold"
+          }}
+          onClick={() => setAddCollectionModalShow(true)}
+        >
+          <p>Add Collection</p>
+        </Button>
         <ButtonToolbar>
           <AddCollectionModal
-            show={modalShow}
-            onHide={() => setModalShow(false)}
+            show={addCollectionModalShow}
+            onHide={() => setAddCollectionModalShow(false)}
+            dialogClassName="modal-90w"
+          />
+        </ButtonToolbar>
+        <ButtonToolbar>
+          <EditProfileModal
+            show={editProfileModalShow}
+            onHide={() => setEditProfileModalShow(false)}
             dialogClassName="modal-90w"
           />
         </ButtonToolbar>
