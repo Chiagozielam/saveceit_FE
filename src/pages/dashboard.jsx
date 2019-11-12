@@ -4,12 +4,12 @@ import Sidenav from "../components/dashboard/sidenav";
 import DashboardLayout from "../layouts/DashboardLayout";
 import CollectionCard from "../components/dashboard/collection";
 import { getUserProfile } from "../actions/userActions";
-import { Redirect } from "react-router-dom";
+import { Redirect, withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import axios from "axios";
 
-const Dashboard = () => {
-  const [collections, setCollections] = useState([]);
+const Dashboard = (props) => {
+  const [allCollections, setAllCollections] = useState([]);
   const dispatchRef = useDispatch();
   useEffect(() => {
     getUserProfile(dispatchRef);
@@ -27,8 +27,8 @@ const Dashboard = () => {
       };
       let sendDataObject = await axios(options);
       sendDataObject = sendDataObject.data;
-      setCollections(sendDataObject);
-      console.log(collections);
+      setAllCollections(sendDataObject);
+      console.log(allCollections);
     };
     fetchCollections()
   }, []);
@@ -42,26 +42,13 @@ const Dashboard = () => {
       <div style={{}}>
         <Container>
           <Row>
-            <Col sm={4}>
-              <CollectionCard />
-            </Col>
-            <Col sm={4}>
-              <CollectionCard />
-            </Col>
-            <Col sm={4}>
-              <CollectionCard />
-            </Col>
-          </Row>
-          <Row>
-            <Col sm={4}>
-              <CollectionCard />
-            </Col>
-            <Col sm={4}>
-              <CollectionCard />
-            </Col>
-            <Col sm={4}>
-              <CollectionCard />
-            </Col>
+          {
+            allCollections.map( collection => (
+              <Col sm={4} key= {collection._id}>
+                <CollectionCard cardImage = {collection.receiptImg[0]} allImages = {collection.receiptImg} cardTitle= {collection.receiptName} id= {collection._id} dashboardHistory={props.history}/>
+              </Col>
+            ))
+          }
           </Row>
         </Container>
       </div>
@@ -69,4 +56,4 @@ const Dashboard = () => {
   );
 };
 
-export default Dashboard;
+export default withRouter(Dashboard);

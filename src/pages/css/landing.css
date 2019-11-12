@@ -45,6 +45,9 @@
   font-weight: bold;
   box-shadow: 10px 15px 10px rgba(0, 0, 0, 0.1);
 }
+.landing-page-top-box-img-box{
+  margin-top: 15%;
+}
 #landing-page-top-box-img {
   animation: bounce 1s 0.2s infinite alternate;
 }
@@ -74,6 +77,13 @@
   margin-bottom: 2% !important;
   height: 180px;
 }
+.landing-page-mobile-card-box Card{
+  margin-bottom: 5%;
+}
+.landing-page-how-to-use-box-inner-cards-icons{
+  font-size: 70px;
+  margin-top: 30px;
+}
 .landing-page-how-to-use-box-inner-cards h4 {
   font-weight: bold;
 }
@@ -84,4 +94,13 @@
 background: -webkit-linear-gradient(to right, #4e4376, #2b5876);  /* Chrome 10-25, Safari 5.1-6 */
 background: linear-gradient(to right, #4e4376, #2b5876); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 
+}
+
+@media only screen and (max-width: 370px) {
+  .landing-page-top-container{
+    border-bottom-right-radius: 50%;
+  }
+  .landing-page-how-to-use-box-inner-cards{
+    margin-bottom: 0 ;
+  }
 }

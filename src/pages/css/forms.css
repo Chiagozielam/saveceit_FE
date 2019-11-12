@@ -27,3 +27,11 @@
     #5c258d
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+@media only screen and (max-width: 400px){
+  .form-box{
+    width: 90%;
+    margin-top: 10%;
+    margin-bottom: 10%;
+  }
+}

@@ -90,3 +90,10 @@ button {
   border: 1px solid black;
   border-radius: 10px;
 }
+
+/* THIS IS THE STYLING FOR THE DESKTOP SIDENAV */
+@media only screen and (max-width: 500px){
+  .desktop-sidenav{
+    display: none;
+  }
+}

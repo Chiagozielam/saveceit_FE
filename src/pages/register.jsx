@@ -49,6 +49,7 @@ const Register = props => {
       <Row>
         <Col
           sm="5"
+          className="d-none d-md-block"
           style={{
             height: "90vh",
             borderTopRightRadius: "45%",

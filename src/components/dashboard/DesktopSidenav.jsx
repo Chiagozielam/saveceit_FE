@@ -5,11 +5,7 @@ import { getUserProfile } from "../../actions/userActions";
 import AddCollectionModal from "./AddCollectionModal";
 import EditProfileModal from "./EditProfileModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faWindowClose,
-  faPlus,
-  faUserCog
-} from "@fortawesome/free-solid-svg-icons";
+import { faWindowClose, faPlus, faUserCog } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 
 const Sidenav = props => {
@@ -19,7 +15,7 @@ const Sidenav = props => {
   console.log(profileData);
 
   return (
-    <div style={{ zIndex: "1000000" }}>
+    <div style={{ zIndex: "1000000" }} className="desktop-sidenav">
       <div
         className="sidenav-container"
         onClick={props.toggleNav}
