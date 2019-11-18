@@ -3,7 +3,8 @@ import {
   LOGIN_USER,
   GET_USER,
   GET_USER_PROFILE,
-  UPDATE_USER_PROFILE
+  UPDATE_USER_PROFILE,
+  LOGOUT_USER
 } from "./types";
 import axios from "axios";
 
@@ -58,4 +59,9 @@ export const getUserProfile = async (dispatch) => {
 export const updateUserProfile = async (inputs, dispatch) => {
   const payload = inputs;
   dispatch({ type: UPDATE_USER_PROFILE, payload });
+};
+
+export const logoutUser = async (dispatch) => {
+  const payload = "";
+  dispatch({ type: LOGOUT_USER, payload });
 };

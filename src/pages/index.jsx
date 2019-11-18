@@ -43,15 +43,7 @@ export default class LandingPage extends Component {
         </div>
         <div className="landing-page-main-body">
           <Container>
-            <p>
-              Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet,
-              consectetur, adipisci velit, sed quia non numquam eius modi
-              tempora incidunt ut labore et dolore magnam aliquam quaerat
-              voluptatem. Neque porro quisquam est, qui dolorem ipsum quia dolor
-              sit amet, consectetur, adipisci velit, sed quia non numquam eius
-              modi tempora incidunt ut labore et dolore magnam aliquam quaerat
-              voluptatem.
-            </p>
+
             <div className="landing-page-how-to-use-box">
               <h2 style={{ marginTop: "20%" }}>Retrieve Receipts Seamlessly</h2>
               <div
