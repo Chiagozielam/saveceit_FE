@@ -11,7 +11,7 @@ const DashboardLayout = props => {
   const toggleNavigation = () => {
     if (nav) {
       setNav(false);
-    } else if(nav == false) {
+    } else if(nav === false) {
       setNav(true);
     }
   };

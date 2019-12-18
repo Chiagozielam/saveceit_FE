@@ -11,7 +11,7 @@ import axios from "axios";
 export const registerUser = async (inputs, dispatch) => {
   const payload = inputs;
   const sendDataObject = await axios.post(
-    "//localhost:5000/api/v1/users/register",
+    `${process.env.REACT_APP_BASE_URL}/api/v1/users/register`,
     payload
   );
   const userToken = sendDataObject.data;
@@ -27,7 +27,7 @@ export const registerUser = async (inputs, dispatch) => {
 export const loginUser = async (inputs, dispatch) => {
   const payload = inputs;
   const sendDataObject = await axios.post(
-    "//localhost:5000/api/v1/users/login",
+    `${process.env.REACT_APP_BASE_URL}/api/v1/users/login`,
     payload
   );
   const userToken = sendDataObject.data;
@@ -40,7 +40,7 @@ export const loginUser = async (inputs, dispatch) => {
 };
 
 export const getUserProfile = async (dispatch) => {
-  const url = "//localhost:5000/api/v1/users/getprofile";
+  const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/getprofile`;
   let userToken = localStorage.getItem("user-token");
   userToken = JSON.parse(userToken);
   const options = {

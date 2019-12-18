@@ -40,7 +40,7 @@ function AddCollectionModal(props) {
 
     console.log(collectionData);
     console.log(userToken);
-    const url = "//localhost:5000/api/v1/users/addreceipt";
+    const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/addreceipt`;
     const headers = {
       headers: {
         "user-token": userToken,

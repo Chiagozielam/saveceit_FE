@@ -8,8 +8,6 @@ import { Redirect, withRouter } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import {
-  faBatteryEmpty,
-  faShoppingBag,
   faCloud
 } from "@fortawesome/free-solid-svg-icons";
 import axios from "axios";
@@ -20,7 +18,7 @@ const Dashboard = props => {
   useEffect(() => {
     getUserProfile(dispatchRef);
     const fetchCollections = async () => {
-      const url = "//localhost:5000/api/v1/users/viewuserreceipts";
+      const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/viewuserreceipts`;
       let userToken = localStorage.getItem("user-token");
       userToken = JSON.parse(userToken);
       const options = {

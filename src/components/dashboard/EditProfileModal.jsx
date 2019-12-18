@@ -53,7 +53,7 @@ function EditProfileModal(props) {
     setLoading(true);
     const profileImg = { picture };
     console.log(picture);
-    const url = "//localhost:5000/api/v1/users/editprofile/image";
+    const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/editprofile/image`;
     const options = {
       method: "PATCH",
       headers: {
@@ -80,7 +80,7 @@ function EditProfileModal(props) {
     e.preventDefault();
     const { name } = inputs;
     const profileName = { profileName: name };
-    const url = "//localhost:5000/api/v1/users/editprofile/name";
+    const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/editprofile/name`;
     const options = {
       method: "PATCH",
       headers: {
