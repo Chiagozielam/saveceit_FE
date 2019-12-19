@@ -17,7 +17,7 @@ export const registerUser = async (inputs, dispatch) => {
   const userToken = sendDataObject.data;
   try {
     localStorage.setItem("user-token", JSON.stringify(userToken));
-    // this.props.history.push("/dashboard/daniel")`
+    this.props.history.push("/dashboard/daniel")
   } catch (err) {
     console.log(`error for userActions.js ${err}`);
   }
@@ -33,6 +33,7 @@ export const loginUser = async (inputs, dispatch) => {
   const userToken = sendDataObject.data;
   try {
     localStorage.setItem("user-token", JSON.stringify(userToken));
+    this.props.history.push("/dashboard/daniel")
   } catch (err) {
     console.log(`error for userActions.js ${err}`);
   }
