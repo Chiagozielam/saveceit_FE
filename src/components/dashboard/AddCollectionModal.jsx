@@ -13,7 +13,7 @@ function AddCollectionModal(props) {
   });
   const [pictures, setPictures] = useState([]);
   const [loading, setLoading] = useState(false);
-  
+
   const onDrop = e => {
     var files = e[0];
     var formData = new FormData();
@@ -28,6 +28,7 @@ function AddCollectionModal(props) {
   };
   const formSubmit = e => {
     e.preventDefault();
+    setLoading(true)
     console.log(pictures);
     const { name } = inputs;
     const receiptName = name;
@@ -43,16 +44,17 @@ function AddCollectionModal(props) {
     const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/addreceipt`;
     const headers = {
       headers: {
-        "user-token": userToken,
+        "user-token": userToken
       }
     };
 
     axios.post(url, collectionData, headers).then(res => {
       console.log(res);
+      // // I'm making a push to /login because I know it'll be redirected back to dashboard.
+      // // I'm smart, aren't I?😁
+      props.history.push("/login")
+      setLoading(false)
     });
-    // // I'm making a push to /login because I know it'll be redirected back to dashboard.
-    // // I'm smart, aren't I?😁
-    // props.history.push("/login")
   };
   return (
     <Modal
