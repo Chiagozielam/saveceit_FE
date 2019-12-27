@@ -1,4 +1,4 @@
-import { REGISTER_USER, LOGIN_USER, GET_USER_PROFILE, UPDATE_USER_PROFILE } from "../actions/types";
+import { REGISTER_USER, LOGIN_USER, GET_USER_PROFILE, UPDATE_USER_PROFILE, LOGOUT_USER } from "../actions/types";
 
 const initialState = {
   loading: false,
@@ -34,6 +34,13 @@ export default (state = initialState, action) => {
         ...state,
         loading: false,
         userProfile: action.payload
+      }
+    }
+    case LOGOUT_USER: {
+      return{
+        ...state,
+        loading: false,
+        token: action.payload
       }
     }
     default:

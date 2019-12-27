@@ -30,7 +30,7 @@ const CollectionCard = props => {
     const collectionId = props.id;
     console.log(collectionId);
 
-    const url = "//localhost:5000/api/v1/users/deletereceipt";
+    const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/deletereceipt`;
     const options = {
       method: "POST",
       headers: {

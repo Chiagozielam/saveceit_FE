@@ -1,43 +1,25 @@
 import React, { useState } from "react";
-import Axios from "axios";
+import axios from "axios";
 import { Modal, Button, Row, Col, Form, Spinner } from "react-bootstrap";
 import ImageUploader from "react-images-upload";
 import { useSelector } from "react-redux";
+import { withRouter } from "react-router-dom";
 
 function AddCollectionModal(props) {
-  let userToken = localStorage.getItem("user-token")
-  userToken = JSON.parse(userToken)
+  let userToken = localStorage.getItem("user-token");
+  userToken = JSON.parse(userToken);
   const [inputs, setInputs] = useState({
     name: ""
   });
   const [pictures, setPictures] = useState([]);
   const [loading, setLoading] = useState(false);
-  const onDrop = picture => {
-    const CLOUDINARY_URL = "https://api.cloudinary.com/v1_1/dcft8yhab/upload";
-    const CLOUDINARY_UPLOAD_PRESET = "qa4hsadk";
-    setLoading(true);
-    picture.map(file => {
-      var formData = new FormData();
 
-      formData.append("file", file);
-      formData.append("upload_preset", CLOUDINARY_UPLOAD_PRESET);
-      Axios({
-        url: CLOUDINARY_URL,
-        method: "POST",
-        headers: {
-          "Content-Type": "applicaction/x-www-form-urlencoded"
-        },
-        data: formData
-      })
-        .then(res => {
-          console.log(res);
-          setPictures(pictures.push(res.data.secure_url));
-          console.log(pictures);
-          setLoading(false);
-        })
-        .catch(err => console.log(err));
-      // console.log(file)
-    });
+  const onDrop = e => {
+    var files = e[0];
+    var formData = new FormData();
+    formData.append("file", files);
+    setPictures(formData);
+    console.log(pictures);
   };
   const onChangeInput = e => {
     const { name, value } = e.target;
@@ -46,35 +28,33 @@ function AddCollectionModal(props) {
   };
   const formSubmit = e => {
     e.preventDefault();
+    setLoading(true)
+    console.log(pictures);
     const { name } = inputs;
-    const receiptName = name
-    const receiptImg = pictures;
-    console.log(pictures)
+    const receiptName = name;
+    const imgFilePaths = pictures;
+    console.log(imgFilePaths);
     const collectionData = {
       receiptName: receiptName,
-      receiptImg: receiptImg
+      imgFilePaths: imgFilePaths
     };
 
     console.log(collectionData);
-    console.log(userToken)
-    const url = "//localhost:5000/api/v1/users/addreceipt";
-    const options = {
-      method : 'POST',
+    console.log(userToken);
+    const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/addreceipt`;
+    const headers = {
       headers: {
-        "Content-Type": "application/x-www-form-urlencoded",
         "user-token": userToken
-      },
-      data: collectionData,
-      url
+      }
+    };
 
-    }
-    Axios(
-      options
-      
-    ).then(res => {
+    axios.post(url, collectionData, headers).then(res => {
       console.log(res);
+      // // I'm making a push to /login because I know it'll be redirected back to dashboard.
+      // // I'm smart, aren't I?😁
+      props.history.push("/login")
+      setLoading(false)
     });
-    // props.history.push("/dashboard")
   };
   return (
     <Modal
@@ -82,7 +62,7 @@ function AddCollectionModal(props) {
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
       centered
-      style={{zIndex:"100000"}}
+      style={{ zIndex: "100000" }}
     >
       <Modal.Header closeButton>
         <Modal.Title id="contained-modal-title-vcenter">
@@ -153,4 +133,4 @@ function AddCollectionModal(props) {
   );
 }
 
-export default AddCollectionModal;
+export default withRouter(AddCollectionModal);

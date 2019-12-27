@@ -3,20 +3,21 @@ import {
   LOGIN_USER,
   GET_USER,
   GET_USER_PROFILE,
-  UPDATE_USER_PROFILE
+  UPDATE_USER_PROFILE,
+  LOGOUT_USER
 } from "./types";
 import axios from "axios";
 
 export const registerUser = async (inputs, dispatch) => {
   const payload = inputs;
   const sendDataObject = await axios.post(
-    "//localhost:5000/api/v1/users/register",
+    `${process.env.REACT_APP_BASE_URL}/api/v1/users/register`,
     payload
   );
   const userToken = sendDataObject.data;
   try {
     localStorage.setItem("user-token", JSON.stringify(userToken));
-    // this.props.history.push("/dashboard/daniel")`
+    this.props.history.push("/dashboard/daniel")
   } catch (err) {
     console.log(`error for userActions.js ${err}`);
   }
@@ -26,12 +27,13 @@ export const registerUser = async (inputs, dispatch) => {
 export const loginUser = async (inputs, dispatch) => {
   const payload = inputs;
   const sendDataObject = await axios.post(
-    "//localhost:5000/api/v1/users/login",
+    `${process.env.REACT_APP_BASE_URL}/api/v1/users/login`,
     payload
   );
   const userToken = sendDataObject.data;
   try {
     localStorage.setItem("user-token", JSON.stringify(userToken));
+    this.props.history.push("/dashboard/daniel")
   } catch (err) {
     console.log(`error for userActions.js ${err}`);
   }
@@ -39,7 +41,7 @@ export const loginUser = async (inputs, dispatch) => {
 };
 
 export const getUserProfile = async (dispatch) => {
-  const url = "//localhost:5000/api/v1/users/getprofile";
+  const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/getprofile`;
   let userToken = localStorage.getItem("user-token");
   userToken = JSON.parse(userToken);
   const options = {
@@ -58,4 +60,9 @@ export const getUserProfile = async (dispatch) => {
 export const updateUserProfile = async (inputs, dispatch) => {
   const payload = inputs;
   dispatch({ type: UPDATE_USER_PROFILE, payload });
+};
+
+export const logoutUser = async (dispatch) => {
+  const payload = "";
+  dispatch({ type: LOGOUT_USER, payload });
 };

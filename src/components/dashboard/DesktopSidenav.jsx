@@ -4,13 +4,15 @@ import { Button, ButtonToolbar } from "react-bootstrap";
 import { getUserProfile } from "../../actions/userActions";
 import AddCollectionModal from "./AddCollectionModal";
 import EditProfileModal from "./EditProfileModal";
+import LogoutModal from "./LogoutModal";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faWindowClose, faPlus, faUserCog } from "@fortawesome/free-solid-svg-icons";
+import { faWindowClose, faPlus, faUserCog, faPowerOff } from "@fortawesome/free-solid-svg-icons";
 import { useSelector, useDispatch } from "react-redux";
 
-const Sidenav = props => {
+const DesktopSidenav = props => {
   const [addCollectionModalShow, setAddCollectionModalShow] = useState(false);
   const [editProfileModalShow, setEditProfileModalShow] = useState(false);
+  const [logoutModalShow, setLogoutModalShow] = useState(false)
   const profileData = useSelector(state => state.user.userProfile);
   console.log(profileData);
 
@@ -58,6 +60,24 @@ const Sidenav = props => {
             Add Collection
           </p>
         </Button>
+        <Button
+          style={{
+            borderRadius: "30px",
+            paddingTop: "17px",
+            fontWeight: "bold",
+            backgroundColor: "red",
+            borderColor: "red"
+          }}
+          onClick={() => setLogoutModalShow(true)}
+        >
+          <p>
+            <FontAwesomeIcon
+              icon={faPowerOff}
+              style={{ fontSize: "20px", marginRight: "5px" }}
+            />
+            Logout
+          </p>
+        </Button>
         <ButtonToolbar>
           <AddCollectionModal
             show={addCollectionModalShow}
@@ -72,9 +92,16 @@ const Sidenav = props => {
             dialogClassName="modal-90w"
           />
         </ButtonToolbar>
+        <ButtonToolbar>
+          <LogoutModal
+            show={logoutModalShow}
+            onHide={() => setLogoutModalShow(false)}
+            dialogClassName="modal-90w"
+          />
+        </ButtonToolbar>
       </div>
     </div>
   );
 };
 
-export default Sidenav;
+export default DesktopSidenav;

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Form, Container, Row, Col, Button } from "react-bootstrap";
+import { Form, Container, Row, Col, Button, Toast } from "react-bootstrap";
 import { useDispatch } from "react-redux";
+import {Redirect} from "react-router-dom"
 import { registerUser } from "../actions/userActions";
 import "./css/forms.css";
 
@@ -20,8 +21,41 @@ const Register = props => {
     console.log(inputs.name);
   };
 
+  const [showErrorToast, setShowErrorToast] = useState(false);
+  const [showErrorMessage, setShowErrorMessage] = useState('');
+  
+  const closeToast = () => {
+    setShowErrorToast(false)
+  }
+
   const onSubmit = async e => {
     e.preventDefault();
+    if(!inputs.firstname){
+      setShowErrorMessage("A valid Firstname input is required!");
+      setShowErrorToast(!showErrorToast);
+      return
+    }else if(!inputs.lastname){
+      setShowErrorMessage("A valid Lastname input is required!");
+      setShowErrorToast(!showErrorToast);
+      return
+    }else if(!inputs.email){
+      setShowErrorMessage("A valid Email input is required!");
+      setShowErrorToast(!showErrorToast);
+      return
+    }else if(!inputs.phoneNumber){
+      setShowErrorMessage("A valid Phone Number input is required!");
+      setShowErrorToast(!showErrorToast);
+      return
+    }else if(!inputs.password){
+      setShowErrorMessage("A valid Password input is required!");
+      setShowErrorToast(!showErrorToast);
+      return
+    }else if(!inputs.confirmPassword){
+      setShowErrorMessage("Please Confirm Password input field cannot be left blank!");
+      setShowErrorToast(!showErrorToast);
+      return
+    }
+
     const {
       firstname,
       lastname,
@@ -38,10 +72,21 @@ const Register = props => {
       password: password
     };
     if (password != confirmPassword) {
+      setShowErrorMessage("The confirm password doesn't match the main password field")
+      setShowErrorToast(!showErrorToast)
+      return;
+    }
+    const emailPattern= /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$/;
+    if(!emailPattern.test(email)){
+      setShowErrorMessage("The Email provided is not a valid email address")
+      setShowErrorToast(!showErrorToast)
       return;
     }
     console.log(registerData);
     registerUser(registerData, dispatchRef);
+    return(
+      <Redirect to="/dashboard"/>
+    )
   };
 
   return (
@@ -59,13 +104,12 @@ const Register = props => {
           <img
             width="100%"
             height="100%"
-            src="https://i.pinimg.com/originals/73/05/8e/73058eb5462639f1ef7e7a4795835a2b.jpg"
+            src="https://res.cloudinary.com/dcft8yhab/image/upload/v1573588622/undraw_jason_mask_t07o.png"
           />
         </Col>
         <Col>
           <div className="form-box shadow">
             <h1 style={{ textAlign: "center", fontWeight: "bold" }}>
-              {" "}
               Sign Up.
             </h1>
             <Form>
@@ -135,7 +179,30 @@ const Register = props => {
                   onChange={onChangeInput}
                 />
               </Form.Group>
-              <Button className="form-button" variant="primary" type="submit" onClick={onSubmit}>
+
+              <div style={{position: "absolute", top: "0", right: "35%"}}>
+                <Toast show={showErrorToast} onClose={closeToast}>
+                  <Toast.Header>
+                    <img
+                      src="holder.js/20x20?text=%20"
+                      className="rounded mr-2"
+                      alt=""
+                    />
+                    <strong className="mr-auto">Error Message</strong>
+                    <small>Just Now</small>
+                  </Toast.Header>
+                  <Toast.Body>
+                    {showErrorMessage}
+                  </Toast.Body>
+                </Toast>
+              </div>
+
+              <Button
+                className="form-button"
+                variant="primary"
+                type="submit"
+                onClick={onSubmit}
+              >
                 Register
               </Button>
             </Form>
