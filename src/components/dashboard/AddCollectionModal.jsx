@@ -29,23 +29,23 @@ function AddCollectionModal(props) {
   };
   const formSubmit = e => {
     e.preventDefault();
-    setLoading(true);
+    setLoading(true)
+    console.log(pictures);
     const { name } = inputs;
     const receiptName = name;
     const imgFilePaths = pictures;
-
+    console.log(imgFilePaths);
     const collectionData = {
-      receiptName,
-      imgFilePaths,
+      receiptName: receiptName,
+      imgFilePaths: imgFilePaths
     };
 
     console.log(collectionData);
     console.log(userToken);
-    const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/newreceipts`;
+    const url = `${process.env.REACT_APP_BASE_URL}/api/v1/users/addreceipt`;
     const headers = {
       headers: {
-        "user-token": userToken,
-        'content-type': 'multipart/form-data',
+        "user-token": userToken
       }
     };
 
@@ -53,7 +53,7 @@ function AddCollectionModal(props) {
       console.log(res);
       // // I'm making a push to /login because I know it'll be redirected back to dashboard.
       // // I'm smart, aren't I?😁
-      // props.history.push("/login")
+      props.history.push("/login")
       setLoading(false)
     });
   };
