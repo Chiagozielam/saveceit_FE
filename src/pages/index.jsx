@@ -17,11 +17,14 @@ export default class LandingPage extends Component {
           <Row>
             <Col sm="7">
               <div className="landing-page-top-box-text">
-                <p>Save Your Receipts </p>
-                <p>On The Cloud With Ease.</p>
+                <p>
+                  <span>Save</span><br/>
+                  <span>Your Receipts On</span><br/>
+                  <span>The Cloud With Ease.</span>
+                </p>
                 <div className="landing-page-top-box-button-container">
                   <Link to="/register">
-                    <Button>Register</Button>
+                    <Button className="landing-page-top-register-button">Register</Button>
                   </Link>
                   <Link to="/login">
                     <Button>Login</Button>
@@ -32,7 +35,7 @@ export default class LandingPage extends Component {
             <Col>
               <div className="d-none d-md-block landing-page-top-box-img-box">
                 <img
-                  src="https://res.cloudinary.com/dcft8yhab/image/upload/v1572916920/undraw_notes1_cf55.svg"
+                  src="https://res.cloudinary.com/dcft8yhab/image/upload/v1588860708/sprinter-colour.svg"
                   alt=" an illustration showing a girl and some documents"
                   width="100%"
                   id="landing-page-top-box-img"
