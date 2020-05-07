@@ -9,6 +9,16 @@ body{
   margin-right: 10%;
 }
 
+.square-box{
+  position: absolute;
+  width: 100px;
+  height: 100px;
+  border: 4px solid rgb(209, 209, 209);
+  transform: translateX(160%);
+  margin-top: -5%;
+  z-index: -99;
+}
+
 .landing-page-top-box-text {
   padding-left: 5%;
   padding-top: 5%;
@@ -72,27 +82,65 @@ body{
 }
 
 .landing-page-main-body {
-  margin-top: 3%;
-  font-weight: bold;
-  text-align: center;
   font-size: 20px;
 }
 .landing-page-how-to-use-box {
+  font-family: 'Montserrat', sans-serif;
   margin-top: 4%;
 }
 .landing-page-how-to-use-box h2 {
-  font-weight: bolder;
+  margin-top: 10%;
+  font-weight: bold;
+  font-size: 40px;
+  text-align: center;
+  text-transform: uppercase;
+
+}
+.landing-page-how-to-use-box-sub-header{
+  text-align: center;
+  text-transform: uppercase;
+  margin-top: -1%;
 }
 .landing-page-how-to-use-box-inner-cards {
   margin-bottom: 2% !important;
-  height: 180px;
 }
-.landing-page-mobile-card-box Card{
-  margin-bottom: 5%;
+.create-an-account-explanation{
+  text-align: right;
+  padding: 10%;
+  margin-top: 10%;
 }
-.landing-page-how-to-use-box-inner-cards-icons{
-  font-size: 70px;
-  margin-top: 30px;
+.create-an-account-explanation h4{
+  text-transform: capitalize;
+}
+.upload-receipts-collection-explanation{
+  padding: 10%;
+  margin-top: 10%;
+}
+.upload-receipts-collection-explanation h4{
+  text-transform: capitalize;
+}
+.how-to-use-main-container{
+  margin-top: 10%;
+}
+.how-to-use-main-container p{
+  font-weight: normal;
+  color: black;
+}
+.landing-page-how-to-use-box-inner-cards{
+  margin-bottom: 5% !important;
+}
+.landing-page-how-to-use-box-inner-cards-img{
+  /* height: 150px; */
+}
+.live-digitally-img-box{
+  height: 100px;
+  width: 50px !important;
+  overflow: hidden;
+}
+.live-digitally-img-box img{
+  height: 100%;
+  width: 100%;
+  max-width: 100% !important;
 }
 .landing-page-how-to-use-box-inner-cards h4 {
   font-weight: bold;
