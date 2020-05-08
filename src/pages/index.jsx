@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import HorizontalScrollCards from "../components/horizontalScrollCards";
 import "./css/landing.css";
 import { Navbar, Container, Row, Col, Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
@@ -112,7 +113,7 @@ export default class LandingPage extends Component {
                       </div>
                     </Col>
                     <Col sm="5">
-                      <div className="landing-page-how-to-use-box-inner-cards-img">
+                      <div className="landing-page-how-to-use-box-inner-cards-img live-digitally-img-box">
                         <img
                           src="https://res.cloudinary.com/dcft8yhab/image/upload/v1588878526/christin-hume-Hcfwew744z4-unsplash.jpg"
                           responsive
@@ -125,9 +126,9 @@ export default class LandingPage extends Component {
                 <div className="landing-page-how-to-use-box-inner-cards">
                   <Row>
                     <Col sm="5">
-                      <div className="landing-page-how-to-use-box-inner-cards-img live-digitally-img-box">
+                      <div className="landing-page-how-to-use-box-inner-cards-img">
                         <img
-                          src=""
+                          src="https://res.cloudinary.com/dcft8yhab/image/upload/v1588860063/day27-my-robot-d0bbf5d487c827616127a0902ec5e388.svg"
                           responsive
                           alt=""
                         />
@@ -155,64 +156,14 @@ export default class LandingPage extends Component {
 
               {/* THIS WOULD ONLY BE DISPLAYED ON MOBILE */}
               <div
-                className="shadow d-md-none"
+                className="d-md-none"
                 style={{
                   width: "95%",
                   margin: "0 auto",
                   padding: "3%",
                 }}
               >
-                <p>Super easy steps to use this platform!</p>
-                <Card
-                  className=""
-                  style={{ overflow: "hidden", marginBottom: "7%" }}
-                >
-                  <div className="landing-page-how-to-use-box-inner-cards-icons">
-                    <FontAwesomeIcon icon={faPlusSquare} />
-                  </div>
-                  <h4>Create An Account</h4>
-                  <p>
-                    Creating an account is so easy. We know you don't like a
-                    registration form that's so long and seems like there'll
-                    never be an end, so we kept it short and simple, while
-                    requiring only information we need to get you started.
-                  </p>
-                </Card>
-                <Card
-                  className=""
-                  style={{ overflow: "hidden", marginBottom: "7%" }}
-                >
-                  <div className="landing-page-how-to-use-box-inner-cards-icons">
-                    <FontAwesomeIcon icon={faCloudDownloadAlt} />
-                  </div>
-                  <h4>Upload receipt collections</h4>
-                  <p>
-                    Upon successful registration, you'll be amazed how easy it
-                    is to add receipts collections. Receipt collections enable
-                    you to add multiple related receipts at once, to one
-                    collection.
-                  </p>
-                </Card>
-                <Card
-                  className=""
-                  style={{ overflow: "hidden", marginBottom: "7%" }}
-                >
-                  <div className="landing-page-how-to-use-box-inner-cards-icons">
-                    <FontAwesomeIcon icon={faGlobeAfrica} />
-                  </div>
-                  <h4>Live Digitally</h4>
-                  <p>
-                    Oops... Do you really need all those piece of papers in your
-                    bag? Embrace the digital culture, and have all your receipts
-                    safely kept together in one place which can be accessed from
-                    anywhere in the world!
-                  </p>
-                </Card>
-                <Link to="/register">
-                  <Button className="shadow-sm" style={{ padding: "2%" }}>
-                    Get Started for Free
-                  </Button>
-                </Link>
+                <HorizontalScrollCards />
               </div>
             </div>
           </Container>
