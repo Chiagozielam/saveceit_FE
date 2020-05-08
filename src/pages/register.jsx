@@ -108,7 +108,7 @@ const Register = props => {
           />
         </Col>
         <Col>
-          <div className="form-box shadow">
+          <div className="form-box">
             <h1 style={{ textAlign: "center", fontWeight: "bold" }}>
               Sign Up.
             </h1>
